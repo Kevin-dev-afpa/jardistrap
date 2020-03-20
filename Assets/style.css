@@ -1,0 +1,54 @@
+.logo
+{
+    width: 100%;
+}
+.banniere
+{
+    width: 100%;
+}
+#lien
+{
+padding: 20px;
+background-color: #000000;
+}
+.titre
+{
+    font-size: 25px;
+}
+#navbar
+{
+    padding: 1px;
+    overflow: auto;   
+}
+.promotion
+{
+    margin-top: 2px;
+    width: 100%;
+}
+#colonne
+{
+    background-color: rgba(209, 209, 209, 0.8);
+}
+a:visited
+{
+    color: white;
+}
+a:link
+{
+    color: white;
+}
+
+@media (max-width: 768px)
+{
+    h1, h2, p, a
+    {
+        font-size: 40px;
+    }
+
+    #lien
+    {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+}

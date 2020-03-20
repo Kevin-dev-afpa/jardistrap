@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lan="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="Assets/style.css">
+    <title>Formulaire</title>
+    <script src="app.js"></script>
+</head>
+
+<body>
+    <p>*Ces zones sont obligatoires</p>
+    <form  action="http://bienvu.net/script.php" method="POST">
+        <div class="form-group">
+
+            <legend>Vos coordonnées</legend>
+            <form id="inscription">
+                <div class="row">
+                    <div class="col">
+                        <input id="nom" type="text" class="form-control" placeholder="Nom">
+                    </div>
+                    <div class="col">
+                        <input id="prenom" type="text" class="form-control" placeholder="Prénom">
+                    </div>
+                </div>
+            </form>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"
+                    checked>
+                <label class="form-check-label" for="exampleRadios1">
+                    Masculin
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"
+                    checked>
+                <label class="form-check-label" for="exampleRadios1">
+                    Féminin
+                </label>
+            </div>
+            <label for="date">Date de naissance:</label><input id="date" type="date" name="ddn" id="date">
+            <div class="container">
+                <div class="row">
+                    <div class='col-sm-6'>
+                        <div class="form-group">
+                            <div class='input-group date' id='datetimepicker3'>
+
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-time"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                        $(function () {
+                            $('#datetimepicker3').datetimepicker({
+                                format: 'LT'
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input id="code" type="number" class="form-control" placeholder="Code postale">
+                </div>
+                <div class="col">
+                    <input id="ville" type="text" class="form-control" placeholder="Ville">
+                </div>
+            </div>
+            <label for="courriel">Adresse email</label>
+            <input id="mail" type="email" class="form-control" name="courriel" id="courriel"
+                placeholder="Saisir votre adresse mail">
+
+            <legend>Votre demande</legend>
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Votre demande</label>
+                <select class="form-control" id="exampleFormControlSelect1">
+                    <option>Mes commandes</option>
+                    <option>Question sur un produit</option>
+                    <option>Réclamation</option>
+                    <option>Autres</option>
+
+                </select>
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Votre question*:</span>
+                </div>
+                <textarea class="form-control" aria-label="With textarea"></textarea>
+            </div>
+
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">J'accepte le traitement automatique de mes
+                    informations</label>
+            </div>
+            <div class="row">
+                <div class="col-sm-10">
+                    <button type="submit" class="btn btn-primary">Envoyer</button>
+                </div>
+
+                <div class="col-sm-10">
+                    <button type="submit" class="btn btn-primary">Annuler</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <p style="color: red;" id="erreur"></p>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
