@@ -1,91 +1,155 @@
-var formValid = document.getElementById("bouton_envoi");
+//Définition des RegEx
+var nom = document.getElementById("nom");
+var nom_m = document.getElementById("nom_manquant");
+var nom_v = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêëàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêëàçîï]+)?$/;
+//+ indique que le caractère peut être présent une ou plusieurs fois
+//? indique que le caractère précédent doit être présent 0 ou 1 fois (absent, présent, mais non répété)
 
-var nom = document.getElementById("name");
-var missNom = document.getElementById("missNom");
-var nomValid = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/;
+var prenom = document.getElementById("prenom");
+var prenom_m = document.getElementById("prenom_manquant");
+var prenom_v = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêëàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêëàçîï]+)?$/;
 
-var prenom = document.getElementById("Prenom");
-var missPrenom = document.getElementById("missPrenom");
-var prenomValid = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/;
+var sexe = document.getElementById("sexe");
+var sexe_m = document.getElementById("sexe_manquant");
 
 var date = document.getElementById("date");
-var missDate = document.getElementById("missDate");
-var dateValid = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
+var date_m = document.getElementById("date_manquant");
+var date_v = /^([1-2][0-9][0-9][0-9](\-)[0-1][0-9](\-)[0-2][0-9])$/;
 
-var mail = document.getElementById("mail");
-var missMail = document.getElementById("missMail");
-var mailValid = /^(.+)@(.+)$/;
-
-var code = document.getElementById("code");
-var missCode = document.getElementById("missCode");
-var codeValid = /[0-9]+[0-9]+[0-9]+([0-9]+[0-9])?$/;
+var adresse = document.getElementById("adresse");
+var adresse_m = document.getElementById("adresse_manquant");
+var adresse_v = /^([0-9]*)?([a-zA-Z,\. ]*)?$/;
+//* indique que le caractère précédent doit être présent 0 fois ou plusieurs fois (absent, présent ou répété)
+var codepostal = document.getElementById("codepostal");
+var codepostal_m = document.getElementById("code_manquant");
+var codepostal_v = /^[0-9]{5}$/;
 
 var ville = document.getElementById("ville");
-var missVille = document.getElementById("missVille");
-var villeValid = /^([a-zA-ZéèîïÉÈÎÏêàçîï]+([-'\s])?[a-zA-ZéèîïÉÈÎÏêàçîï]*)+$/
+var ville_m = document.getElementById("ville_manquant");
+var ville_v = /^[a-zA-ZéèîïÉÈÎÏ]([a-zéèêëàçîï]?)+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêëàçîï]+)?$/;
 
-formValid.addEventListener("click", validation);
+var mail = document.getElementById("mail");
+var mail_m = document.getElementById("mail_manquant");
+var mail_v = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[az0-9])?/;
 
-function validation(event) {
-  if (nom.validity.valueMissing) { //Si le champ nom est vide
-    event.preventDefault();
-    missNom.textContent = "Nom manquant";
-    missNom.style.color = "red";
+var sujet = document.getElementById("sujet");
+var sujet_m = document.getElementById("sujet_manquant");
 
-  } else if (nomValid.test(nom.value) == false) { //Si le format nom est incorrect
-    event.preventDefault();
-    missNom.textContent = "Format incorrect";
-    missNom.style.color = "orange";
-  }
-  if (prenom.validity.valueMissing) { //Si le champ prénom est vide
-    event.preventDefault();
-    missPrenom.textContent = "Prénom manquant";
-    missPrenom.style.color = "red";
+var question = document.getElementById("question");
+var question_m = document.getElementById("question_manquant");
 
-  } else if (prenomValid.test(prenom.value) == false) { //Si le format de données prénom est incorrect
-    event.preventDefault();
-    missPrenom.textContent = "Format incorrect";
-    missPrenom.style.color = "orange";
-  }
-  if (date.validity.valueMissing) { //Si le format date est vide
-    event.preventDefault();
-    missDate.textContent = "Date manquante";
-    missDate.style.color = "red";
-  } else if (dateValid.test(date.value) == false) { //Si le format date est incorrect
-    event.preventDefault();
-    missDate.textContent = "Format incorrect";
-    missDate.style.color = "orange";
-  }
-  if (mail.validity.valueMissing) { //Si le champ email est vide
-    event.preventDefault();
-    missMail.textContent = "mail manquant";
-    missMail.style.color = "red";
+var bouton = document.getElementById("bouton");
+var bouton_m = document.getElementById("bouton_manquant");
 
-  } else if (mailValid.test(mail.value) == false) { //Si le format de données email est incorrect
+var validation = document.getElementById("bouton_envoi");
+validation.addEventListener("click", f_valid);
+/*La dernière ligne permet de définir la validation ou non du formulaire, 
+le addEventListener va écouter par un clic ("click") la validation du f_valid définit plus tard 
+grâce au bouton_envoi définit précédemment dans la variable validation*/
+
+//Définition des conditions d'acceptation du formulaire
+
+function f_valid() {
+
+  //Vérification du nom
+  if (nom.validity.valueMissing) {
     event.preventDefault();
-    missMail.textContent = "Format incorrect";
-    missMail.style.color = "orange";
+    nom_m.textContent = "Veuillez renseigner votre nom";
+    nom_m.style.color = "red";
+  } else if (nom_v.test(nom.value) == false) {
+    event.preventDefault();
+    nom_m.textContent = "Format incorrect";
+    nom_m.style.color = "orange";
   }
 
-  if (code.validity.valueMissing) { //Si le champ code postal est vide
+  //Vérification du prénom
+  if (prenom.validity.valueMissing) {
     event.preventDefault();
-    missCode.textContent = "Code postal manquant";
-    missCode.style.color = "red";
+    prenom_m.textContent = "Veuillez renseigner votre prénom";
+    prenom_m.style.color = "red"
+  } else if (prenom_v.test(prenom.value) == false) {
+    event.preventDefault();
+    prenom_m.textContent = "Format incorrect";
+    prenom_m.style.color = "orange";
+  }
 
-  } else if (codeValid.test(code.value) == false) { //Si le format code postal est incorrect
+  //Vérification du sexe
+  if (sexe.validity.valueMissing) {
     event.preventDefault();
-    missCode.textContent = "Format incorrect";
-    missCode.style.color = "orange";
+    sexe_m.textContent = "Veuillez renseigner un de ces champs";
+    sexe_m.style.color = "red";
+  }
 
-  } if (ville.validity.valueMissing) { //Si le champ ville est vide
+  //Vérification de la date
+  if (date.validity.valueMissing) {
     event.preventDefault();
-    missVille.textContent = "Ville manquant";
-    missVille.style.color = "red";
-    
-  } else if (villeValid.test(ville.value) == false) { //Si le format ville est incorrect
+    date_m.textContent = "Veuillez renseigner votre date de naissance";
+    date_m.style.color = "red";
+  } else if (date_v.test(date.value) == false) {
     event.preventDefault();
-    missVille.textContent = "Format incorrect";
-    missVille.style.color = "orange";
+    date_m.textContent = "Format incorrect";
+    date_m.style.color = "orange";
+  }
+
+  //Vérification de l'adresse
+  if (adresse.validity.valueMissing) {
+    event.preventDefault();
+    adresse_m.textContent = "Veuillez renseigner votre adresse";
+    adresse_m.style.color = "red"
+  } else if (adresse_v.test(adresse.value) == false) {
+    event.preventDefault();
+    adresse_m.textContent = "Format incorrect";
+    adresse_m.style.color = "orange";
+  }
+
+  //Vérification du code postal
+  if (codepostal.validity.valueMissing) {
+    event.preventDefault();
+    codepostal_m.textContent = "Veuillez renseigner votre code postal";
+    codepostal_m.style.color = "red";
+  } else if (codepostal_v.test(codepostal.value) == false) {
+    event.preventDefault();
+    codepostal_m.textContent = "Format incorrect";
+    codepostal_m.style.color = "orange";
+  }
+  //Vérification de la ville
+  if (ville.validity.valueMissing) {
+    event.preventDefault();
+    ville_m.textContent = "Veuillez renseigner votre ville";
+    ville_m.style.color = "red"
+  } else if (ville_v.test(ville.value) == false) {
+    event.preventDefault();
+    ville_m.textContent = "Format incorrect";
+    ville_m.style.color = "orange";
+  }
+  //Vérification du mail
+  if (mail.validity.valueMissing) {
+    event.preventDefault();
+    mail_m.textContent = "Veuillez renseigner votre adresse mail";
+    mail_m.style.color = "red";
+  } else if (mail_v.test(mail.value) == false) {
+    event.preventDefault();
+    mail_m.textContent = "Format incorrect";
+    mail_m.style.color = "orange";
+  }
+  //Vérification du sujet de la question
+  if (sujet.validity.valueMissing) {
+    event.preventDefault();
+    sujet_m.textContent = "Veuillez choisir un sujet";
+    sujet_m.style.color = "red";
+  }
+
+  //Vérification de la question
+  if (question.validity.valueMissing) {
+    event.preventDefault();
+    question_m.textContent = "Veuillez poser votre question";
+    question_m.style.color = "red";
+  }
+
+  //Vérifiaction du bouton d'acceptation
+  if (bouton == null) {
+    event.preventDefault();
+    bouton_m.textContent = "Veuillez accepter le traitement informatique";
+    bouton_m.style.color = "red";
   }
 }
-
