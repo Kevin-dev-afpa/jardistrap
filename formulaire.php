@@ -11,6 +11,8 @@
     <title>Contact</title>
 </head>
 
+
+
 <div class="container">
     <div class="row">
 
@@ -26,9 +28,9 @@
             </button>
             <div class="collapse navbar-collapse" id="collapsibleNavBar">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="Tableau.html">Tableau</a></li>
-                    <li class="nav-item"><a class="nav-link" href="Contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Tableau.php">Tableau</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Contact.php">Contact</a></li>
                 </ul>
             </div>
         </nav>

@@ -28,6 +28,11 @@ nav {
  h3 {
     text-align: center;
  }
+
+ #banniere{
+    background-color: black;
+    width: 100%;
+ }
  
  .logo {
     width: 100%;
@@ -42,7 +47,7 @@ nav {
     padding: 0;
  }
  
- /*La div accueil regroupe les deux blocks qu'ils faut mettre côte à côte, ne SURTOUT PAS mettre de position*/
+ La div accueil regroupe les deux blocks qu'ils faut mettre côte à côte, ne SURTOUT PAS mettre de position
  .Accueil {
     display: flex;
  }

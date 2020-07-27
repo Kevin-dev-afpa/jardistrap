@@ -1,4 +1,3 @@
-
 <footer>
 <nav id="navbar" class="navbar navbar-expand-sm bg-dark navbar-dark">
   <!-- Toggler/collapsibe Button -->

@@ -12,7 +12,7 @@
     </div>
     </div>
     <div>
-      <img class="banniere" src="jarditou_html_zip/images/promotion.jpg" alt="logo promotion">
+      <img  class="banniere" src="jarditou_html_zip/images/promotion.jpg" alt="logo promotion" width=100%>
     </div>
   </header>
   <nav id="navbar" class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -24,13 +24,13 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="main.html">Accueil</a>
+          <a class="nav-link" href="index.php">Accueil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="tableau.html">Tableau</a>
+          <a class="nav-link" href="tableau.php">Tableau</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="formulaire.html">Formulaire</a>
+          <a class="nav-link" href="formulaire.php">Formulaire</a>
         </li>
       </ul>
     </div>

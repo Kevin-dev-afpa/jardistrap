@@ -18,6 +18,18 @@
     </style>
     </head>
 
+<!-- Insertion de l'en-tête -->
+<?php
+if (file_exists("entete.php"))
+{
+include("entete.php");
+}
+else
+{
+  echo "En-tête introuvable";
+}
+?>
+    
 <body>
     <div class="table-responsive">
         <table class="table table-striped table-hover table-bordered">
