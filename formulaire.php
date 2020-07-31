@@ -39,7 +39,7 @@
         <div class="col-12"><img src="jarditou_html_zip/images/promotion.jpg" alt="Promotion" class="promotion"></div>
 
         <!-- Début du formulaire -->
-        <form action="http://bienvu.net/script.php" method="POST" class="col-12">
+        <form action="produits_ajout.php" method="POST" class="col-12">
             <div class="form-group">
                 <p>* Ces zones sont obligatoires</p>
 

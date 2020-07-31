@@ -9,7 +9,7 @@ function connexionBase()
 
     try
     {
-        $db = new PDO('mysql:host='.$host.';charset=utf8;dbname='.$base, $login, $password);
+        $db = new PDO('mysql:host='.$host.';charset=utf8;dbname='.$base, $login, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
         return $db;
     }
     catch (Exception $e)
