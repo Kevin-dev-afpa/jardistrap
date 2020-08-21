@@ -1,0 +1,24 @@
+git stash save "monstash" 
+git stash list
+git pop
+
+git reset --hard HEAD (supprime les documents avant qu'ils soient commit)
+git reset --hard HEAD^(supprime le dernier commit)
+git reset --hard HEAD^4(supprime les 4 derniers commits)
+
+git rm (ne plus suivre le fichier, enlève le fichier une fois qu'il a été add pour ne pas le commit)
+
+gitk (accées à l'historique)
+gitk& (accées à l'historique tout en ayant accèes à la console)
+gitk& --all (accées à tous les historiques de toutes les branches)
+
+git branch "nomdelabranche" (crée une branche)
+git checkout "nomdelabranche" (aller dans la branche)
+git checkout -b "nomdelabranche" (permet de créer la branche et directement d'aller dessus)
+
+git merge "nomdelabrancheafusionner"
+
+git rebase "nomdelabranchedontonveutrécupérerlesinfos" (permet de mettre à jour notre branche avec la branche en question)
+
+git branch -d "nomdelabranch"
+
